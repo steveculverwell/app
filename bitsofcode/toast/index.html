@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../asets/base.css">
+    <link rel="stylesheet" href="toast.css">
+</head>
+<body>
+    <div class="container">
+        <div class="site-section">
+            <h1>toast</h1>
+        </div>
+    </div>    
+
+    <script src="toast.js"></script>
+    <script>
+        new Toast({
+          message: 'This is an example with custom buttons',
+          type: 'success',
+          customButtons: [
+            {
+              text: 'Hold the front page',
+              onClick: function() {
+                window.location.reload();
+              }
+            },          
+            {
+              text: 'Refresh the page',
+              onClick: function() {
+                window.location.reload();
+              }
+            },
+            {
+              text: 'Follow @ireaderinokun',
+              onClick: function() {
+                window.open('https://twitter.com/ireaderinokun');
+              }
+            }
+          ]
+        });
+    </script>
+
+</body>
+</html>

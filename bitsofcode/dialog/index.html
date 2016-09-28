@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../assets/base.css">
+    <style>
+        .dialog-overlay{
+            z-index: 2;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(5,0,0,0.7);
+        }
+        
+        .dialog{
+            z-index: 3;
+            background: #fff;
+            padding: 20px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        
+        .dialog-overlay[aria-hidden="true"], .dialog[aria-hidden="true"]{
+            display: none;
+        }
+        
+        .dialog-overlay:not([aria-hidden="true"]),
+        .dialog:not([aria-hidden="true"]) {
+            display: block;
+        }
+
+        .sr-only {
+            opacity: 0;
+            position: absolute;
+            clip: rect(1px 1px 1px 1px);
+            clip: rect(1px, 1px, 1px, 1px);
+        }
+    </style>
+    
+
+</head>
+<body>
+    
+    <header>
+        <div class="wrapper">
+            <h1><a href="https://ireade.github.io/accessible-modal-dialog/">Accessible Dialog</a></h1>
+            <button type="button" aria-label="Open Navigation" class="open-dialog"> <i class="fa fa-bars">nav bar</i> </button>
+        </div>
+    </header>
+
+    <div class="dialog" role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+        <h1>site nav</h1>
+        <p id="dialog-description" class="sr-only">Description goes here</p>
+        <nav>
+            <ul>
+                <li><a href="http://www.bbc.co.uk/iplayer">one</a></li>
+                <li><a href="http://www.bbc.co.uk/news">two</a></li>
+                <li><a href="http://www.bbc.co.uk/radio">three</a></li>
+            </ul>
+        </nav>
+        <button type="button" aria-label="close nav" class="close-dialog"><i class="fa fa-times">popup</i></button>
+    </div>
+
+    <div class="wrapper body-wrapper">
+        <p><a href="https://github.com/ireade/accessible-modal-dialog">View Source</a> | <a href="=https://bitsofco.de/accessible-modal-dialog">Blog Post</a> 
+        <p>Venmo tacos ennui hoodie lomo tousled. Meh irony blue bottle brooklyn paleo. Post-ironic PBR&B blue bottle, iPhone meh ennui forage salvia normcore neutra chicharrones gentrify. Banjo jean shorts selfies, try-hard venmo before they sold out 8-bit gluten-free pinterest sustainable messenger bag you probably haven't heard of them poutine. Scenester farm-to-table craft beer, knausgaard leggings letterpress brunch asymmetrical. Brooklyn you probably haven't heard of them typewriter flannel. Etsy austin venmo, knausgaard green juice squid butcher kombucha literally beard jean shorts VHS tote bag.</p>
+    </div>
+
+    <div class="dialog-overlay" tabindex="-1"></div>
+
+    <script src="Dialog.js"></script>
+    <script>
+        var navDialogEl = document.querySelector('.dialog'), 
+            dialogOverlay = document.querySelector('.dialog-overlay');
+
+        var myDialog = new Dialog(navDialogEl, dialogOverlay);
+        myDialog.addEventListeners('.open-dialog', '.close-dialog')
+
+    </script>
+    
+</body>
+</html>
